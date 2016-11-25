@@ -1,0 +1,3 @@
+141  [main] INFO  com.pnt.LogbackProject.LogbackTest - info
+141  [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
+141  [main] ERROR com.pnt.LogbackProject.LogbackTest - error

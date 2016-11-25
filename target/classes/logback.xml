@@ -6,7 +6,11 @@
 	<!-- 设置上下文名称 -->
 	<contextName>${context.name}</contextName>
 
-	<!-- 日志输出目的地 -->
+	<!-- 日志输出目的地
+		name:appender名称
+		class:appender的全路径名称
+	 -->
+	 <!-- ConsoleAppender -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoder默认配置为PatternLayoutEncoder -->
 		<encoder>
@@ -35,17 +39,31 @@
 		</encoder>
 	</appender>
 
+	<!-- FileAppender
+		file:被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建
+		append:true 日志被追加到文件的末尾；false 清空当前文件进行追加
+		encoder:对日志进行格式化
+	 -->
+	<appender name="file" class="ch.qos.logback.core.FileAppender">
+		<file>output/file.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
 	<!-- logger
-		name:对于某包或某类进行日志控制
+		name:对于某包或某类进行日志约束
 		level:日志级别
 		additivity:true 将日志上传给根Logger;false 不将日志上传给根Logger
 	 -->
-	<logger name="com.pnt.LogbackProject" level="WARN" additivity="false">
+	<logger name="com.pnt.LogbackProject" level="INFO" additivity="false">
 		<appender-ref ref="console" />
+		<appender-ref ref="file" />
 	</logger>
 
 	<!-- 根logger -->
-	<root level="INFO">
+	<root level="WARN">
 		<appender-ref ref="console" />
 	</root>
 </configuration>
