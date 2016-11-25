@@ -12,6 +12,21 @@
 	 -->
 	 <!-- ConsoleAppender -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- filter:LevelFilter,ThresholdFilter,EvaluatorFilter
+			过滤器，执行一个过滤器会有返回个枚举值，即DENY，NEUTRAL，ACCEPT其中之一。
+			返回DENY，日志将立即被抛弃不再经过其他过滤器；返回NEUTRAL，有序列表里的下个过滤器过接着处理日志；
+			返回ACCEPT，日志会被立即处理，不再经过剩余过滤器。
+		 -->
+		<!-- LevelFilter
+			level:设置过滤级别
+			onMatch:用于配置符合过滤条件的操作
+			onMismatch:用于配置不符合过滤条件的操作
+		 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
 		<!-- encoder默认配置为PatternLayoutEncoder -->
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
