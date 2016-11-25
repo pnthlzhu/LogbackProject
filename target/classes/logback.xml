@@ -32,9 +32,17 @@
 	              %n
 	          </pattern>
            -->
-
 		</encoder>
 	</appender>
+
+	<!-- logger
+		name:对于某包或某类进行日志控制
+		level:日志级别
+		additivity:true 将日志上传给根Logger;false 不将日志上传给根Logger
+	 -->
+	<logger name="com.pnt.LogbackProject" level="WARN" additivity="false">
+		<appender-ref ref="console" />
+	</logger>
 
 	<!-- 根logger -->
 	<root level="INFO">
