@@ -16,3 +16,15 @@
 150  [main] INFO  com.pnt.LogbackProject.LogbackTest - info
 153  [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
 153  [main] ERROR com.pnt.LogbackProject.LogbackTest - error
+1063 [main] INFO  com.pnt.LogbackProject.LogbackTest - info
+1078 [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
+1078 [main] ERROR com.pnt.LogbackProject.LogbackTest - error
+156  [main] INFO  com.pnt.LogbackProject.LogbackTest - info
+156  [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
+156  [main] ERROR com.pnt.LogbackProject.LogbackTest - error
+156  [main] INFO  com.pnt.LogbackProject.LogbackTest - info
+156  [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
+156  [main] ERROR com.pnt.LogbackProject.LogbackTest - error
+16:16:04.845 [main] INFO  com.pnt.LogbackProject.LogbackTest - info
+16:16:04.845 [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
+16:16:04.845 [main] ERROR com.pnt.LogbackProject.LogbackTest - error
