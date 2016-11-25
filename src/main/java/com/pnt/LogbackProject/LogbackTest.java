@@ -1,5 +1,7 @@
 package com.pnt.LogbackProject;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -20,7 +22,7 @@ public class LogbackTest {
 	}
 
 	/**
-	 * 日志输出
+	 * 简单日志输出
 	 * @throws Exception
 	 */
 	@Test
@@ -30,5 +32,20 @@ public class LogbackTest {
 		logger.info("info");
 		logger.warn("warn");
 		logger.error("error");
+	}
+
+	/**
+	 * 含变量的日志输出
+	 * @throws Exception
+	 */
+	@Test
+	public void test2() throws Exception {
+		String name = "hlzhu";
+		String message = "hello logback";
+		String[] fruits = new String[]{"apple", "banana"};
+
+		logger.info("Hello,{}!", name);
+		logger.info("Hello,{}! {}!", name, message);
+		logger.info("Fruits:{},{}", fruits);
 	}
 }
