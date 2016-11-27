@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
  * @author hlzhu
  * @date 2016年11月25日
  */
-public class LogbackTest {
+public class Slf4j_LogbackTest {
 
 	private Logger logger;
 
 	@Before
 	public void init() throws Exception {
-		logger = LoggerFactory.getLogger(LogbackTest.class);
+		logger = LoggerFactory.getLogger(Slf4j_LogbackTest.class);
 	}
 
 	/**
