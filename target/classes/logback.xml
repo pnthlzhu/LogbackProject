@@ -3,6 +3,15 @@
 	<!-- 设置变量 -->
 	<property name="context.name" value="logback" />
 
+	<!-- Email -->
+	<property name="smtpHost" value="192.168.1.10" />
+	<property name="username" value="zhu_huiling" />
+	<property name="password" value="zhu_huiling" />
+	<property name="email_from" value="zhu_huiling@psh.com.cn" />
+	<property name="email_to" value="zhu_huiling@psh.com.cn" />
+	<property name="ssl" value="false" />
+	<property name="email_subject" value="【Error】: %logger" />
+
 	<!-- 设置上下文名称 -->
 	<contextName>${context.name}</contextName>
 
@@ -96,6 +105,31 @@
 		</encoder>
 	</appender>
 
+	<appender name="email" class="ch.qos.logback.classic.net.SMTPAppender">
+		<smtpHost>${smtpHost}</smtpHost>
+		<Username>${username}</Username>
+		<Password>${password}</Password>
+		<SSL>${ssl}</SSL>
+		<to>${email_to}</to>
+		<from>${email_from}</from>
+		<subject>${email_subject}</subject>
+		<layout class="ch.qos.logback.classic.html.HTMLLayout" >
+            <pattern>%date%level%thread%logger{0}%line%message</pattern>
+        </layout>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.JaninoEventEvaluator">
+                <expression>
+                    if(level >= WARN) {
+                        return true;
+                    }
+                    return false;
+                </expression>
+            </evaluator>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+	</appender>
+
 	<!-- logger
 		name:对于某包或某类进行日志约束
 		level:日志级别
@@ -106,6 +140,7 @@
 		<appender-ref ref="file" />
 		<appender-ref ref="systemFile" />
 		<appender-ref ref="rollingFile" />
+		<appender-ref ref="email" />
 	</logger>
 
 	<!-- 根logger -->
