@@ -56,11 +56,23 @@
 
 	<!-- FileAppender
 		file:被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建
+			举例说明：
+			1./output/file.log:系统盘根目录下创建该路径
+			2.output/file.log:项目根路径下创建该路径
+			3.D:/output/file.log:D盘根目录下创建该路径
 		append:true 日志被追加到文件的末尾；false 清空当前文件进行追加
 		encoder:对日志进行格式化
 	 -->
 	<appender name="file" class="ch.qos.logback.core.FileAppender">
 		<file>output/file.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="systemFile" class="ch.qos.logback.core.FileAppender">
+		<file>/output/file.log</file>
 		<append>true</append>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>
@@ -76,7 +88,7 @@
 	<!-- 每天生产一个日志文件，保存30天的日志文件 -->
 	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>output/rolling/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>D:/output/rolling/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>
@@ -92,6 +104,7 @@
 	<logger name="com.pnt.LogbackProject" level="INFO" additivity="false">
 		<appender-ref ref="console" />
 		<appender-ref ref="file" />
+		<appender-ref ref="systemFile" />
 		<appender-ref ref="rollingFile" />
 	</logger>
 

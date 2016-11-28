@@ -28,3 +28,6 @@
 16:16:04.845 [main] INFO  com.pnt.LogbackProject.LogbackTest - info
 16:16:04.845 [main] WARN  com.pnt.LogbackProject.LogbackTest - warn
 16:16:04.845 [main] ERROR com.pnt.LogbackProject.LogbackTest - error
+08:48:38.426 [main] INFO  c.p.L.Slf4j_LogbackTest - info
+08:48:38.426 [main] WARN  c.p.L.Slf4j_LogbackTest - warn
+08:48:38.426 [main] ERROR c.p.L.Slf4j_LogbackTest - error
